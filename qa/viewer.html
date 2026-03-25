@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IIIF QA Viewer</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/mirador@latest/dist/css/mirador.min.css">
+  </head>
+  <body class="viewer-page">
+    <header class="viewer-header">
+      <a id="backLink" href="./index.html" class="back-link">Back to browse</a>
+      <div>
+        <h1 id="viewerTitle">Manifest Viewer</h1>
+        <p id="viewerManifest" class="viewer-manifest"></p>
+      </div>
+    </header>
+    <main id="mirador" class="mirador-root"></main>
+
+    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+    <script src="./viewer.js"></script>
+  </body>
+  </html>

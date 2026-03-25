@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/image_qa_report.schema.json",
+  "title": "Image QA Report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "rulesVersion",
+    "generatedAt",
+    "imagesDir",
+    "status",
+    "thresholds",
+    "summary",
+    "items"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "rulesVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "imagesDir": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "primaryMinDimension",
+        "additionalMinDimension",
+        "warnMaxFileSizeMB",
+        "warnMaxMegapixels"
+      ],
+      "properties": {
+        "primaryMinDimension": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "additionalMinDimension": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "warnMaxFileSizeMB": {
+          "type": "number",
+          "minimum": 0
+        },
+        "warnMaxMegapixels": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "totalFiles",
+        "totalImages",
+        "statusCounts",
+        "issueCounts",
+        "roleCounts"
+      ],
+      "properties": {
+        "totalFiles": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalImages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "statusCounts": {
+          "type": "object",
+          "required": [
+            "pass",
+            "warn",
+            "fail"
+          ],
+          "properties": {
+            "pass": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "warn": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fail": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "issueCounts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "roleCounts": {
+          "type": "object",
+          "required": [
+            "PRIMARY",
+            "ADDITIONAL"
+          ],
+          "properties": {
+            "PRIMARY": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ADDITIONAL": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "fileName",
+          "role",
+          "isImage",
+          "identifier",
+          "metadata",
+          "issues",
+          "status"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "PRIMARY",
+              "ADDITIONAL"
+            ]
+          },
+          "isImage": {
+            "type": "boolean"
+          },
+          "identifier": {
+            "type": "object",
+            "required": [
+              "canonical",
+              "compliant"
+            ],
+            "properties": {
+              "canonical": {
+                "type": "string"
+              },
+              "compliant": {
+                "type": "boolean"
+              }
+            }
+          },
+          "metadata": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "format": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "minDimension": {
+                "type": "integer"
+              },
+              "megapixels": {
+                "type": "number"
+              },
+              "bitDepth": {
+                "type": "integer"
+              },
+              "colorSpace": {
+                "type": "string"
+              },
+              "channels": {
+                "type": "string"
+              },
+              "compression": {
+                "type": "string"
+              },
+              "fileSizeMB": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "code",
+                "severity",
+                "message",
+                "recommendation"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "warn",
+                    "fail"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "recommendation": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "warn",
+              "fail"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

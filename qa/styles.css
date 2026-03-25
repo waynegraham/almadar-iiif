@@ -1,0 +1,152 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #222;
+  --muted: #5a6472;
+  --border: #d9dee7;
+  --accent: #1b6ac9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.header p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.controls {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.controls input {
+  max-width: 420px;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+}
+
+.summary {
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+.tile-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.tile-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #ecf0f5;
+}
+
+.tile-body {
+  padding: 0.6rem 0.7rem 0.8rem;
+}
+
+.tile-id {
+  margin: 0;
+  font-size: 0.98rem;
+  line-break: anywhere;
+}
+
+.tile-meta {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.pagination button {
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: var(--surface);
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.viewer-page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.viewer-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.viewer-header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.viewer-manifest {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.back-link {
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mirador-root {
+  min-height: 0;
+}

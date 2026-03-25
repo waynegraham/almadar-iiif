@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IIIF QA Browser</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>IIIF QA Browser</h1>
+        <p>Browse manifests, search by ID, and open in Mirador.</p>
+      </header>
+
+      <section class="controls">
+        <label for="searchInput">Search ID</label>
+        <input id="searchInput" type="search" placeholder="e.g. G2_03_0001N" autocomplete="off">
+      </section>
+
+      <p id="summary" class="summary"></p>
+      <section id="tiles" class="tiles"></section>
+
+      <nav class="pagination">
+        <button id="prevBtn" type="button">Previous</button>
+        <span id="pageLabel"></span>
+        <button id="nextBtn" type="button">Next</button>
+      </nav>
+    </main>
+
+    <template id="tileTemplate">
+      <article class="tile">
+        <a class="tile-link">
+          <img class="tile-image" loading="lazy" alt="">
+          <div class="tile-body">
+            <h2 class="tile-id"></h2>
+            <p class="tile-meta"></p>
+          </div>
+        </a>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
